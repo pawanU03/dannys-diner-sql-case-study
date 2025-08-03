@@ -1,6 +1,6 @@
 # 🍜 Case Study #1: Danny's Diner
 
-![Danny's Diner](./dannys_diner.png)
+![Danny's Diner]([./dannys_diner.png](https://8weeksqlchallenge.com/images/case-study-designs/1.png))
 
 ## 📋 Table of Contents
 - [Problem Statement](#problem-statement)
