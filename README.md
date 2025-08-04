@@ -1,6 +1,6 @@
 # 🍜 Case Study #1: Danny's Diner
 
-![Danny's Diner](./dannys_diner.png)
+![Danny's Diner](https://github.com/pawanU03/dannys-diner-sql-case-study/blob/main/dannys_diner.png)
 
 ## 📋 Table of Contents
 - [Problem Statement](#problem-statement)
@@ -23,7 +23,7 @@ Danny has provided you with a sample of his overall customer data due to privacy
 
 ## 🗂️ Entity Relationship Diagram
 
-![Entity Relationship Diagram](./Danny's%20Diner.png)
+![Entity Relationship Diagram](https://github.com/pawanU03/dannys-diner-sql-case-study/blob/main/Danny's%20Diner.png)
 
 ---
 
@@ -125,7 +125,36 @@ GROUP BY customer_id;
 | B           | 6                   |
 | C           | 2                   |
 
-### 🔄 Questions 3-10: Coming Soon!
+### ✅ 3. What was the first item from the menu purchased by each customer?
+
+```sql
+WITH RankedPurchase AS (
+	SELECT
+		s.order_date,
+		s.customer_id,
+		m.product_name,
+		DENSE_RANK() OVER(PARTITION BY s.customer_id ORDER BY s.order_date ASC) AS purchase_rank
+	FROM sales s
+	JOIN menu m
+	ON s.product_id = m.product_id
+)
+SELECT
+    rp.customer_id,
+    rp.product_name
+FROM RankedPurchase rp
+WHERE rp.purchase_rank = 1
+GROUP BY rp.customer_id, rp.product_name;
+```
+
+**Result:**
+ customer_id | product_name |
+ ----------- | ------------ |
+ A           | sushi        |
+ A           | curry        |
+ B           | curry        |
+ C           | ramen        |
+
+### 🔄 Questions 4-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
 ---
