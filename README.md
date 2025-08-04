@@ -157,24 +157,4 @@ GROUP BY rp.customer_id, rp.product_name;
 ### 🔄 Questions 4-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
----
-
-## 🎯 Key Insights (So Far)
-
-Based on the analysis completed for Danny's Diner data:
-
-1. **Customer Spending**: Customer A spent the most ($76), followed by Customer B ($74), and Customer C ($36)
-2. **Visit Frequency**: Customer B visited the most frequently (6 days), while Customer C visited the least (2 days)
-
-*More insights will be added as additional questions are solved.*
-
-## 📈 Initial Recommendations
-
-1. **Focus on Customer Retention**: Customer C shows lower engagement - consider targeted promotions
-2. **Customer B Engagement**: Despite frequent visits, Customer B's spending is slightly less than Customer A - opportunity for upselling
-
-*Additional recommendations will be developed as the analysis progresses.*
-
----
-
 *This case study is part of the [8 Week SQL Challenge](https://8weeksqlchallenge.com/case-study-1/) by Data With Danny.*
