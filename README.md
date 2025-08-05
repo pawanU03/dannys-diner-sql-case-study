@@ -3,15 +3,15 @@
 ![Danny's Diner](https://github.com/pawanU03/dannys-diner-sql-case-study/blob/main/dannys_diner.png)
 
 ## 📋 Table of Contents
-- [Problem Statement](#problem-statement)
-- [Entity Relationship Diagram](#entity-relationship-diagram)
-- [Dataset](#dataset)
-- [Case Study Questions](#case-study-questions)
-- [Solutions](#solutions)
+- [Problem Statement](#-problem-statement)
+- [Entity Relationship Diagram](#-entity-relationship-diagram)
+- [Dataset](#-dataset)
+- [Case Study Questions](#-case-study-questions)
+- [Solutions](#-solutions)
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they've spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
 
@@ -21,13 +21,13 @@ Danny has provided you with a sample of his overall customer data due to privacy
 
 ---
 
-## 🗂️ Entity Relationship Diagram
+## Entity Relationship Diagram
 
 ![Entity Relationship Diagram](https://github.com/pawanU03/dannys-diner-sql-case-study/blob/main/Danny's%20Diner.png)
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 Danny has shared with you 3 key datasets for this case study:
 
@@ -71,7 +71,7 @@ The final members table captures the `join_date` when a `customer_id` joined the
 
 ---
 
-## ❓ Case Study Questions
+## Case Study Questions
 
 Each of the following case study questions can be answered using a single SQL statement:
 
@@ -147,14 +147,36 @@ GROUP BY rp.customer_id, rp.product_name;
 ```
 
 **Result:**
- customer_id | product_name |
- ----------- | ------------ |
- A           | sushi        |
- A           | curry        |
- B           | curry        |
- C           | ramen        |
+| customer_id | product_name |
+| ----------- | ------------ |
+| A           | sushi        |
+| A           | curry        |
+| B           | curry        |
+| C           | ramen        |
 
-### 🔄 Questions 4-10: Coming Soon!
+### ✅ 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+
+```sql
+SELECT
+    s.product_id,
+    m.product_name,
+    COUNT(s.product_id) AS purchase_count
+FROM sales s
+JOIN menu m ON s.product_id = m.product_id
+GROUP BY m.product_name, s.product_id
+ORDER BY purchase_count DESC;
+```
+
+**Result:**
+| product_id | product_name | purchase_count |
+| ---------- | ------------ | -------------- |
+| 3          | ramen        | 8              |
+| 2          | curry        | 4              |
+| 1          | sushi        | 3              |
+
+### 🔄 Questions 5-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
+
+---
 
 *This case study is part of the [8 Week SQL Challenge](https://8weeksqlchallenge.com/case-study-1/) by Data With Danny.*
