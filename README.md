@@ -11,7 +11,7 @@
 
 ---
 
-## Problem Statement
+## 🎯 Problem Statement
 
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they've spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
 
@@ -21,13 +21,13 @@ Danny has provided you with a sample of his overall customer data due to privacy
 
 ---
 
-## Entity Relationship Diagram
+## 🗂️ Entity Relationship Diagram
 
 ![Entity Relationship Diagram](https://github.com/pawanU03/dannys-diner-sql-case-study/blob/main/Danny's%20Diner.png)
 
 ---
 
-## Dataset
+## 📊 Dataset
 
 Danny has shared with you 3 key datasets for this case study:
 
@@ -71,7 +71,7 @@ The final members table captures the `join_date` when a `customer_id` joined the
 
 ---
 
-## Case Study Questions
+## ❓ Case Study Questions
 
 Each of the following case study questions can be answered using a single SQL statement:
 
