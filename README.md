@@ -174,7 +174,43 @@ ORDER BY purchase_count DESC;
 | 2          | curry        | 4              |
 | 1          | sushi        | 3              |
 
-### 🔄 Questions 5-10: Coming Soon!
+### ✅ 5. Which item was the most popular for each customer?
+
+```sql
+WITH most_popular_item AS (
+	SELECT
+		s.customer_id,
+		s.product_id,
+		m.product_name,
+		COUNT(*) AS purchase_count,
+        DENSE_RANK() OVER(PARTITION BY s.customer_id ORDER BY COUNT(*) DESC) AS rank_
+	FROM
+		sales s
+	JOIN 
+		menu m
+	ON s.product_id = m.product_id
+	GROUP BY s.customer_id, s.product_id, m.product_name
+	ORDER BY s.customer_id, s.product_id DESC
+)
+SELECT
+	mpi.customer_id,
+	mpi.product_name,
+    	mpi.purchase_count
+FROM most_popular_item mpi
+WHERE rank_ = 1;
+```
+
+**Result:**
+
+| customer_id | product_name | purchase_count |
+| ----------- | ------------ | -------------- |
+| A           | ramen        | 3              |
+| B           | ramen        | 2              |
+| B           | curry        | 2              |
+| B           | sushi        | 2              |
+| C           | ramen        | 3              |
+
+### 🔄 Questions 6-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
 ---
