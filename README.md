@@ -210,7 +210,36 @@ WHERE rank_ = 1;
 | B           | sushi        | 2              |
 | C           | ramen        | 3              |
 
-### 🔄 Questions 6-10: Coming Soon!
+### ✅ 6. Which item was purchased first by the customer after they became a member?
+
+```sql
+WITH first_purchased AS (
+	SELECT
+		s.customer_id,
+		me.product_name,
+		s.order_date,
+		DENSE_RANK() OVER(PARTITION BY s.customer_id ORDER BY s.order_date) AS rank_
+	FROM sales s
+	JOIN members m ON s.customer_id = m.customer_id
+	JOIN menu me ON me.product_id = s.product_id
+	WHERE s.order_date > m.join_date
+)
+SELECT
+	order_date,
+	customer_id,
+    product_name
+FROM first_purchased
+WHERE rank_ = 1;
+```
+
+**Result:**
+
+| order_date  | customer_id  | product_name   |
+| ----------- | ------------ | -------------- |
+| 2021-01-10  | A            | ramen          |
+| 2021-01-10  | B            | sushi          |
+
+### 🔄 Questions 7-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
 ---
