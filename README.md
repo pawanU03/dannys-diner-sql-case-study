@@ -239,7 +239,34 @@ WHERE rank_ = 1;
 | 2021-01-10  | A            | ramen          |
 | 2021-01-10  | B            | sushi          |
 
-### 🔄 Questions 7-10: Coming Soon!
+### ✅ 7. Which item was purchased just before the customer became a member?
+```sql
+WITH before_membership AS (
+	SELECT
+		s.customer_id,
+		me.product_name,
+		s.order_date,
+		ROW_NUMBER() OVER(PARTITION BY s.customer_id ORDER BY s.order_date DESC) AS rank_
+	FROM sales s
+	JOIN members m ON s.customer_id = m.customer_id
+	JOIN menu me ON me.product_id = s.product_id
+	WHERE s.order_date < m.join_date
+)
+SELECT
+	order_date,
+	customer_id,
+    product_name
+FROM before_membership
+WHERE rank_ = 1;
+```
+
+**Result:**
+| order_date  | customer_id  | product_name   |
+| ----------- | ------------ | -------------- |
+| 2021-01-01  | A            | sushi          |
+| 2021-01-04  | B            | sushi          |
+
+### 🔄 Questions 8-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
 ---
