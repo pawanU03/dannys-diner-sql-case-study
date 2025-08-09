@@ -266,7 +266,29 @@ WHERE rank_ = 1;
 | 2021-01-01  | A            | sushi          |
 | 2021-01-04  | B            | sushi          |
 
-### 🔄 Questions 8-10: Coming Soon!
+✅ 8. What is the total items and amount spent for each member before they became a member?
+```sql
+SELECT
+	s.customer_id,
+    COUNT(s.customer_id) AS total_items,
+    SUM(m.price) AS amount_spent
+FROM sales s
+JOIN members me
+ON s.customer_id = me.customer_id
+JOIN menu m
+ON m.product_id = s.product_id
+WHERE s.order_date < me.join_date
+GROUP BY s.customer_id
+ORDER BY s.customer_id;
+```
+
+**Result:**
+| customer_id  | total_items  | amount_spent   |
+| ------------ | ------------ | -------------- |
+| A  		   | 2            | 25       	   |
+| B  		   | 3            | 40 	           |
+
+### 🔄 Questions 9-10: Coming Soon!
 *Solutions will be added as I work through each question daily.*
 
 ---
